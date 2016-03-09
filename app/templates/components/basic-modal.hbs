@@ -1,0 +1,45 @@
+{{#if title}}
+	<div class="header">
+		<div class="ui flex space between vCenter">
+			{{title}}
+			{{#if closable}}
+				<i class="new-icon cancel"></i>
+			{{/if}}
+		</div>
+	</div>
+{{/if}}
+<div class="content">
+	{{message}}
+	{{#if contentTemplateName}}
+		{{component contentTemplateName model=model}}
+	{{/if}}
+	{{#if isPrompt}}
+		<div class="ui form">
+			<div class="{{'ui field input'}} {{if labelValue 'labeled'}}">
+				{{#if labelValue}}
+					<div class="ui label">
+						{{labelValue}}
+					</div>
+				{{/if}}
+				{{input type="text" placeholder=promptPlaceholder value=promptValue}}
+			</div>
+		</div>
+	{{/if}}
+	{{yield}}
+</div>
+
+{{#if footerButtons}}
+	<div class="actions">
+		<div class="custom-footer" style="float: left"></div>
+		{{#unless isAlert}}
+			<div class="ui basic deny button">
+				{{cancel}}
+			</div>
+		{{/unless}}
+		{{#if isOkButton}}
+			<div class="ui positive primary right button">
+				{{ok}}
+			</div>
+		{{/if}}
+	</div>
+{{/if}}
