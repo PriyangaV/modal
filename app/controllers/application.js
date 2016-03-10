@@ -8,7 +8,7 @@ export default Controller.extend({
 
 	actions: {
 		showDialog(){
-			CustomDialog.show( "create-folder-dialog", {
+			let dialogObject = CustomDialog.show( "create-folder-dialog", {
 				title: "Create Folder",
 				buttons: {
 					"Create Folder": function(){
@@ -20,6 +20,10 @@ export default Controller.extend({
 				},
 				dialogType: "modal"
 			});
+
+			Ember.run.later(function(){
+				dialogObject.send("hideDialog");
+			}, 1000);
 		}
 	}
 });

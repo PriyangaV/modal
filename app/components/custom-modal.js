@@ -38,6 +38,7 @@ export default Component.extend({
     }.on("didReceiveAttrs"),
 
     didInsertElement(){
+
         this.$().modal({
 
             onApprove: () => {
@@ -46,8 +47,16 @@ export default Component.extend({
             onDeny: () => {
                 this.get("buttons")[this.get("cancelLabel")]();
             }
-
-        }).modal('show');
+        });
+        this.send("showDialog");
+    },
+    actions: {
+        showDialog(){
+            this.$().modal("show");
+        },
+        hideDialog(){
+            this.$().modal("hide");
+        }
     }
 
 });

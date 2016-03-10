@@ -15,5 +15,10 @@ export default Ember.Object.create({
         const dialog = new DialogComponent();
 
         dialog.setProperties( options ).append();
+
+        return dialog;
+    },
+    hide(){
+
     }
 });
